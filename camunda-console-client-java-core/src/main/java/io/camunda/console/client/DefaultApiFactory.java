@@ -41,6 +41,7 @@ public class DefaultApiFactory {
       CloseableHttpClient httpClient =
           HttpClients.custom().addRequestInterceptorFirst(interceptor).build();
       ApiClient apiClient = new ApiClient(httpClient);
+      apiClient.setBasePath(properties.baseUrl());
       api = new DefaultApi(apiClient);
     }
   }
