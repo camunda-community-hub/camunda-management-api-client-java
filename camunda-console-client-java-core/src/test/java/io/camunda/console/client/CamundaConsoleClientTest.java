@@ -28,7 +28,7 @@ public class CamundaConsoleClientTest {
   }
 
   @Test
-  void shouldWork(WireMockRuntimeInfo runtimeInfo) {
+  void shouldExecuteRequest(WireMockRuntimeInfo runtimeInfo) {
     stubFor(post("/token").willReturn(ok().withJsonBody(tokenBody())));
     stubFor(get("/api/clusters").willReturn(ok().withJsonBody(clusters())));
     CamundaConsoleClient client = CamundaConsoleClient.create(mockProperties(runtimeInfo));
