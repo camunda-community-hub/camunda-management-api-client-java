@@ -29,11 +29,11 @@ var consoleClient = CamundaConsoleClient.fromEnv();
 The environment variables are:
 
 ```
-CAMUNDA_CONSOLE_CLIENT_ID (mandatory)
-CAMUNDA_CONSOLE_CLIENT_SECRET (mandatory)
+CAMUNDA_MANAGEMENT_API_CLIENT_ID (mandatory)
+CAMUNDA_MANAGEMENT_API_CLIENT_SECRET (mandatory)
 CAMUNDA_OAUTH_URL (default: 'https://login.cloud.camunda.io/oauth/token')
-CAMUNDA_CONSOLE_BASE_URL (default: 'https://api.cloud.camunda.io')
-CAMUNDA_CONSOLE_OAUTH_AUDIENCE (default: 'api.cloud.camunda.io')
+CAMUNDA_MANAGEMENT_API_BASE_URL (default: 'https://api.cloud.camunda.io')
+CAMUNDA_MANAGEMENT_API_OAUTH_AUDIENCE (default: 'api.cloud.camunda.io')
 ```
 
 * by using a properties file:
@@ -45,9 +45,9 @@ var consoleClient = CamundaConsoleClient.fromProperties(properties);
 The properties are:
 
 ```
-camunda.console.client-id (mandatory)
-camunda.console.client-secret (mandatory)
+camunda.management.api.client-id (mandatory)
+camunda.management.api.client-secret (mandatory)
 camunda.oauth-url (default: 'https://login.cloud.camunda.io/oauth/token')
-camunda.console.base-url (default: 'https://api.cloud.camunda.io')
-camunda.console.oauth-audience (default: 'api.cloud.camunda.io')
+camunda.management.api.base-url (default: 'https://api.cloud.camunda.io')
+camunda.management.api.oauth-audience (default: 'api.cloud.camunda.io')
 ```
