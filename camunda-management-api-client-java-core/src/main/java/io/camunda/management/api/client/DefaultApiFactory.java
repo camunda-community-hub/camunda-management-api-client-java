@@ -5,27 +5,27 @@ import io.camunda.management.api.client.api.DefaultApi;
 import io.camunda.management.api.client.auth.JsonClientResponseHandler;
 import io.camunda.management.api.client.auth.TokenRequestInterceptor;
 import io.camunda.management.api.client.invoker.ApiClient;
-import io.camunda.management.api.client.properties.CamundaConsoleClientProperties;
+import io.camunda.management.api.client.properties.CamundaManagementApiClientProperties;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.HttpRequestInterceptor;
 
 public class DefaultApiFactory {
-  private final CamundaConsoleClientProperties properties;
+  private final CamundaManagementApiClientProperties properties;
   private final ObjectMapper objectMapper;
   private DefaultApi api;
 
-  private DefaultApiFactory(CamundaConsoleClientProperties properties, ObjectMapper objectMapper) {
+  private DefaultApiFactory(CamundaManagementApiClientProperties properties, ObjectMapper objectMapper) {
     this.properties = properties;
     this.objectMapper = objectMapper;
   }
 
-  public static DefaultApiFactory getInstance(CamundaConsoleClientProperties properties) {
+  public static DefaultApiFactory getInstance(CamundaManagementApiClientProperties properties) {
     return getInstance(properties, new ObjectMapper());
   }
 
   public static DefaultApiFactory getInstance(
-      CamundaConsoleClientProperties properties, ObjectMapper objectMapper) {
+      CamundaManagementApiClientProperties properties, ObjectMapper objectMapper) {
     return new DefaultApiFactory(properties, objectMapper);
   }
 

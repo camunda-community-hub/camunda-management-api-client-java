@@ -7,14 +7,14 @@ import static io.camunda.management.api.client.properties.PropertiesConstants.Pr
 import java.util.Map;
 import java.util.Properties;
 
-public record CamundaConsoleClientProperties(
+public record CamundaManagementApiClientProperties(
     String baseUrl, String clientId, String clientSecret, String oAuthUrl, String oAuthAudience) {
-  public static CamundaConsoleClientProperties fromEnv() {
+  public static CamundaManagementApiClientProperties fromEnv() {
     return fromEnv(System.getenv());
   }
 
-  public static CamundaConsoleClientProperties fromEnv(Map<String, String> environment) {
-    return new CamundaConsoleClientProperties(
+  public static CamundaManagementApiClientProperties fromEnv(Map<String, String> environment) {
+    return new CamundaManagementApiClientProperties(
         environment.getOrDefault(
             ENV_CAMUNDA_MANAGEMENT_API_BASE_URL, CAMUNDA_MANAGEMENT_API_SAAS_BASE_URL),
         environment.get(ENV_CAMUNDA_MANAGEMENT_API_CLIENT_ID),
@@ -24,8 +24,8 @@ public record CamundaConsoleClientProperties(
             ENV_CAMUNDA_MANAGEMENT_API_OAUTH_AUDIENCE, CAMUNDA_MANAGEMENT_API_SAAS_OAUTH_AUDIENCE));
   }
 
-  public static CamundaConsoleClientProperties fromProperties(Properties properties) {
-    return new CamundaConsoleClientProperties(
+  public static CamundaManagementApiClientProperties fromProperties(Properties properties) {
+    return new CamundaManagementApiClientProperties(
         properties.getProperty(
             PROP_CAMUNDA_MANAGEMENT_API_BASE_URL, CAMUNDA_MANAGEMENT_API_SAAS_BASE_URL),
         properties.getProperty(PROP_CAMUNDA_MANAGEMENT_API_CLIENT_ID),

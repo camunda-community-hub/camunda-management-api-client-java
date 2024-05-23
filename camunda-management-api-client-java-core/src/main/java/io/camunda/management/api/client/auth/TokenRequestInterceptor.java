@@ -3,10 +3,11 @@ package io.camunda.management.api.client.auth;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import io.camunda.management.api.client.properties.CamundaConsoleClientProperties;
+import io.camunda.management.api.client.properties.CamundaManagementApiClientProperties;
 import java.io.IOException;
 import java.net.URI;
 import java.time.LocalDateTime;
+
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
@@ -24,13 +25,13 @@ import org.slf4j.LoggerFactory;
 
 public class TokenRequestInterceptor implements HttpRequestInterceptor {
   private static final Logger LOG = LoggerFactory.getLogger(TokenRequestInterceptor.class);
-  private final CamundaConsoleClientProperties properties;
+  private final CamundaManagementApiClientProperties properties;
   private final JsonClientResponseHandler responseHandler;
   private String token;
   private LocalDateTime timeout = LocalDateTime.now();
 
   public TokenRequestInterceptor(
-      CamundaConsoleClientProperties properties, JsonClientResponseHandler responseHandler) {
+      CamundaManagementApiClientProperties properties, JsonClientResponseHandler responseHandler) {
     this.properties = properties;
     this.responseHandler = responseHandler;
   }

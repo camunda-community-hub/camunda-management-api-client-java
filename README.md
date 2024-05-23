@@ -1,29 +1,29 @@
-# Camunda Console Client Java
+# Camunda Management API Client Java
 
 ## How to use
 
-To use the Camunda console client, add the dependency to your project:
+To use the Camunda management api client, add the dependency to your project:
 
 ```xml
 <dependency>
   <groupId>io.camunda</groupId>
-  <artifactId>camunda-console-client-java-core</artifactId>
-  <version>${version.camunda-console-client-java}</version>
+  <artifactId>camunda-management-api-client-java-core</artifactId>
+  <version>${version.camunda-management-api-client-java}</version>
 </dependency>
 ```
 
 Then, you can bootstrap the client:
 
-* by providing `CamundaConsoleClientProperties`:
+* by providing `CamundaManagementApiClientProperties`:
 
 ```java
-var consoleClient = CamundaConsoleClient.create(camundaConsoleClientProperties);
+var managementApiClient = CamundaManagementApiClient.create(camundaManagementApiClientProperties);
 ```
 
 * by using env variables:
 
 ```java
-var consoleClient = CamundaConsoleClient.fromEnv();
+var managementApiClient = CamundaManagementApiClient.fromEnv();
 ```
 
 The environment variables are:
@@ -39,7 +39,7 @@ CAMUNDA_MANAGEMENT_API_OAUTH_AUDIENCE (default: 'api.cloud.camunda.io')
 * by using a properties file:
 
 ```java
-var consoleClient = CamundaConsoleClient.fromProperties(properties);
+var managementApiClient = CamundaManagementApiClient.fromProperties(properties);
 ```
 
 The properties are:

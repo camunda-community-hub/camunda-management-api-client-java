@@ -7,9 +7,10 @@ import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import io.camunda.management.api.client.api.CamundaManagementApiClient;
 import io.camunda.management.api.client.model.Cluster;
-import io.camunda.management.api.client.properties.CamundaConsoleClientProperties;
+import io.camunda.management.api.client.properties.CamundaManagementApiClientProperties;
 import java.util.List;
 import java.util.UUID;
+
 import org.junit.jupiter.api.Test;
 import wiremock.com.fasterxml.jackson.databind.JsonNode;
 import wiremock.com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,8 +19,8 @@ import wiremock.com.fasterxml.jackson.databind.node.ObjectNode;
 
 @WireMockTest
 public class CamundaManagementApiClientTest {
-  private static CamundaConsoleClientProperties mockProperties(WireMockRuntimeInfo runtimeInfo) {
-    return new CamundaConsoleClientProperties(
+  private static CamundaManagementApiClientProperties mockProperties(WireMockRuntimeInfo runtimeInfo) {
+    return new CamundaManagementApiClientProperties(
         runtimeInfo.getHttpBaseUrl() + "/api",
         "id",
         "secret",

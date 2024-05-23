@@ -13,23 +13,23 @@ import io.camunda.management.api.client.model.CreatedClusterClient;
 import io.camunda.management.api.client.model.IpAllowListBody;
 import io.camunda.management.api.client.model.IpWhiteListBody;
 import io.camunda.management.api.client.model.PostMemberBody;
-import io.camunda.management.api.client.properties.CamundaConsoleClientProperties;
+import io.camunda.management.api.client.properties.CamundaManagementApiClientProperties;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
 public interface CamundaManagementApiClient {
 
-  static CamundaManagementApiClient create(CamundaConsoleClientProperties properties) {
+  static CamundaManagementApiClient create(CamundaManagementApiClientProperties properties) {
     return new CamundaManagementApiClientImpl(DefaultApiFactory.getInstance(properties).get());
   }
 
   static CamundaManagementApiClient fromEnv() {
-    return create(CamundaConsoleClientProperties.fromEnv());
+    return create(CamundaManagementApiClientProperties.fromEnv());
   }
 
   static CamundaManagementApiClient fromProperties(Properties properties) {
-    return create(CamundaConsoleClientProperties.fromProperties(properties));
+    return create(CamundaManagementApiClientProperties.fromProperties(properties));
   }
 
   Clusters clusters();
