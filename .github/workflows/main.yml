@@ -45,7 +45,7 @@ jobs:
         with:
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: ${{ steps.release.outputs.artifacts_archive_path }}
-          asset_name: camunda-console-client-java.zip
+          asset_name: camunda-management-api-client-java.zip
           asset_content_type: application/zip
       - name: Publish Unit Test Results
         id: publish
