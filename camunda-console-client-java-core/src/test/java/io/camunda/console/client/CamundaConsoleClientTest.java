@@ -3,10 +3,6 @@ package io.camunda.console.client;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.assertj.core.api.Assertions.*;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import io.camunda.console.client.api.CamundaConsoleClient;
@@ -15,6 +11,10 @@ import io.camunda.console.client.properties.CamundaConsoleClientProperties;
 import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
+import wiremock.com.fasterxml.jackson.databind.JsonNode;
+import wiremock.com.fasterxml.jackson.databind.ObjectMapper;
+import wiremock.com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import wiremock.com.fasterxml.jackson.databind.node.ObjectNode;
 
 @WireMockTest
 public class CamundaConsoleClientTest {
