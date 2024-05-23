@@ -15,7 +15,8 @@ public class DefaultApiFactory {
   private final ObjectMapper objectMapper;
   private DefaultApi api;
 
-  private DefaultApiFactory(CamundaManagementApiClientProperties properties, ObjectMapper objectMapper) {
+  private DefaultApiFactory(
+      CamundaManagementApiClientProperties properties, ObjectMapper objectMapper) {
     this.properties = properties;
     this.objectMapper = objectMapper;
   }

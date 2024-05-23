@@ -16,14 +16,17 @@ public class CamundaManagementApiClientPropertiesTest {
   void shouldBootstrapFromProperties() throws IOException {
     Properties properties = new Properties();
     try (InputStream in =
-        getClass().getClassLoader().getResourceAsStream("camunda-management-api-client.properties")) {
+        getClass()
+            .getClassLoader()
+            .getResourceAsStream("camunda-management-api-client.properties")) {
       properties.load(in);
     }
     CamundaManagementApiClientProperties camundaManagementApiClientProperties =
         CamundaManagementApiClientProperties.fromProperties(properties);
     assertThat(camundaManagementApiClientProperties.clientId()).isEqualTo("clientId");
     assertThat(camundaManagementApiClientProperties.clientSecret()).isEqualTo("clientSecret");
-    assertThat(camundaManagementApiClientProperties.baseUrl()).isEqualTo("https://api.my.camunda.io");
+    assertThat(camundaManagementApiClientProperties.baseUrl())
+        .isEqualTo("https://api.my.camunda.io");
     assertThat(camundaManagementApiClientProperties.oAuthUrl())
         .isEqualTo("https://login.my.camunda.io/oauth/token");
     assertThat(camundaManagementApiClientProperties.oAuthAudience()).isEqualTo("api.my.camunda.io");
@@ -44,7 +47,8 @@ public class CamundaManagementApiClientPropertiesTest {
     assertThat(camundaManagementApiClientProperties.clientSecret()).isEqualTo("clientSecret");
     assertThat(camundaManagementApiClientProperties.baseUrl())
         .isEqualTo(Default.CAMUNDA_MANAGEMENT_API_SAAS_BASE_URL);
-    assertThat(camundaManagementApiClientProperties.oAuthUrl()).isEqualTo(Default.CAMUNDA_SAAS_OAUTH_URL);
+    assertThat(camundaManagementApiClientProperties.oAuthUrl())
+        .isEqualTo(Default.CAMUNDA_SAAS_OAUTH_URL);
     assertThat(camundaManagementApiClientProperties.oAuthAudience())
         .isEqualTo(Default.CAMUNDA_MANAGEMENT_API_SAAS_OAUTH_AUDIENCE);
   }
@@ -61,7 +65,8 @@ public class CamundaManagementApiClientPropertiesTest {
         CamundaManagementApiClientProperties.fromEnv(environment);
     assertThat(camundaManagementApiClientProperties.clientId()).isEqualTo("clientId");
     assertThat(camundaManagementApiClientProperties.clientSecret()).isEqualTo("clientSecret");
-    assertThat(camundaManagementApiClientProperties.baseUrl()).isEqualTo("https://api.my.camunda.io");
+    assertThat(camundaManagementApiClientProperties.baseUrl())
+        .isEqualTo("https://api.my.camunda.io");
     assertThat(camundaManagementApiClientProperties.oAuthUrl())
         .isEqualTo("https://login.my.camunda.io/oauth/token");
     assertThat(camundaManagementApiClientProperties.oAuthAudience()).isEqualTo("api.my.camunda.io");
@@ -78,7 +83,8 @@ public class CamundaManagementApiClientPropertiesTest {
     assertThat(camundaManagementApiClientProperties.clientSecret()).isEqualTo("clientSecret");
     assertThat(camundaManagementApiClientProperties.baseUrl())
         .isEqualTo(Default.CAMUNDA_MANAGEMENT_API_SAAS_BASE_URL);
-    assertThat(camundaManagementApiClientProperties.oAuthUrl()).isEqualTo(Default.CAMUNDA_SAAS_OAUTH_URL);
+    assertThat(camundaManagementApiClientProperties.oAuthUrl())
+        .isEqualTo(Default.CAMUNDA_SAAS_OAUTH_URL);
     assertThat(camundaManagementApiClientProperties.oAuthAudience())
         .isEqualTo(Default.CAMUNDA_MANAGEMENT_API_SAAS_OAUTH_AUDIENCE);
   }
