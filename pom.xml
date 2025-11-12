@@ -8,6 +8,7 @@
   </parent>
   <groupId>io.camunda</groupId>
   <artifactId>camunda-management-api-client-java-parent</artifactId>
+  <name>Camunda Management API Client Java Parent</name>
   <version>2.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modules>
