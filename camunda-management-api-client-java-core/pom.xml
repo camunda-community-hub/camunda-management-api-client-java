@@ -4,7 +4,7 @@
   <parent>
     <groupId>io.camunda</groupId>
     <artifactId>camunda-management-api-client-java-parent</artifactId>
-    <version>2.1.0</version>
+    <version>2.1.1-SNAPSHOT</version>
   </parent>
   <artifactId>camunda-management-api-client-java-core</artifactId>
   <name>Camunda Management API Client Java Core</name>
