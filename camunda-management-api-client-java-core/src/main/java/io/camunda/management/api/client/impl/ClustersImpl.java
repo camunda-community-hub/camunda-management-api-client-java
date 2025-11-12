@@ -31,11 +31,7 @@ public class ClustersImpl extends AbstractCamundaManagementApiClient implements 
   }
 
   @Override
-  public io.camunda.management.api.client.model.Parameters parameters() {
-    try {
-      return getApi().getParameters();
-    } catch (ApiException e) {
-      throw new CamundaConsoleClientException(e);
-    }
+  public Parameters parameters() {
+    return new ParametersImpl(this);
   }
 }

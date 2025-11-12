@@ -29,4 +29,14 @@ public class CamundaManagementApiClientImpl extends AbstractCamundaManagementApi
   public Member members(String email) {
     return new MemberImpl(this, email);
   }
+
+  @Override
+  public Meta meta() {
+    return new MetaImpl(this);
+  }
+
+  @Override
+  public Activity activity() {
+    return new ActivityImpl(this);
+  }
 }
