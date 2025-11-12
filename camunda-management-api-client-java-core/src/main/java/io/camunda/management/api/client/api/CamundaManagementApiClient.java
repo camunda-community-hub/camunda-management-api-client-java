@@ -2,6 +2,7 @@ package io.camunda.management.api.client.api;
 
 import io.camunda.management.api.client.DefaultApiFactory;
 import io.camunda.management.api.client.impl.CamundaManagementApiClientImpl;
+import io.camunda.management.api.client.model.AuditDto;
 import io.camunda.management.api.client.model.BackupDto;
 import io.camunda.management.api.client.model.ClusterClient;
 import io.camunda.management.api.client.model.ClusterClientConnectionDetails;
@@ -10,9 +11,12 @@ import io.camunda.management.api.client.model.CreateClusterBody;
 import io.camunda.management.api.client.model.CreateClusterClientBody;
 import io.camunda.management.api.client.model.CreateSecretBody;
 import io.camunda.management.api.client.model.CreatedClusterClient;
+import io.camunda.management.api.client.model.GenerationUpgradeForClusterDto;
 import io.camunda.management.api.client.model.IpAllowListBody;
 import io.camunda.management.api.client.model.IpWhiteListBody;
+import io.camunda.management.api.client.model.MetaDto;
 import io.camunda.management.api.client.model.PostMemberBody;
+import io.camunda.management.api.client.model.UpdateClusterBody;
 import io.camunda.management.api.client.properties.CamundaManagementApiClientProperties;
 import java.util.List;
 import java.util.Map;
@@ -40,12 +44,16 @@ public interface CamundaManagementApiClient {
 
   Member members(String email);
 
+  Meta meta();
+
+  Activity activity();
+
   interface Clusters {
     List<io.camunda.management.api.client.model.Cluster> get();
 
     CreateCluster200Response post(CreateClusterBody request);
 
-    io.camunda.management.api.client.model.Parameters parameters();
+    Parameters parameters();
 
     interface Parameters {
       io.camunda.management.api.client.model.Parameters get();
@@ -56,6 +64,10 @@ public interface CamundaManagementApiClient {
     io.camunda.management.api.client.model.Cluster get();
 
     void delete();
+
+    void patch(UpdateClusterBody request);
+
+    Upgrade upgrade();
 
     Backups backups();
 
@@ -130,5 +142,31 @@ public interface CamundaManagementApiClient {
     void post(PostMemberBody request);
 
     void delete();
+  }
+
+  interface Upgrade {
+    GenerationUpgradeForClusterDto put();
+  }
+
+  interface Meta {
+    IpRanges ipRanges();
+  }
+
+  interface IpRanges {
+    MetaDto ipRanges();
+  }
+
+  interface Activity {
+    Json json();
+
+    Csv csv();
+  }
+
+  interface Json {
+    List<AuditDto> get();
+  }
+
+  interface Csv {
+    String get();
   }
 }

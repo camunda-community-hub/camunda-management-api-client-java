@@ -1,8 +1,10 @@
 package io.camunda.management.api.client.impl;
 
 import io.camunda.management.api.client.api.CamundaManagementApiClient.Cluster;
+import io.camunda.management.api.client.api.CamundaManagementApiClient.Upgrade;
 import io.camunda.management.api.client.exception.CamundaConsoleClientException;
 import io.camunda.management.api.client.invoker.ApiException;
+import io.camunda.management.api.client.model.UpdateClusterBody;
 
 public class ClusterImpl extends AbstractCluster implements Cluster {
 
@@ -26,6 +28,20 @@ public class ClusterImpl extends AbstractCluster implements Cluster {
     } catch (ApiException e) {
       throw new CamundaConsoleClientException(e);
     }
+  }
+
+  @Override
+  public void patch(UpdateClusterBody request) {
+    try {
+      getApi().updateCluster(getClusterId(), request);
+    } catch (ApiException e) {
+      throw new CamundaConsoleClientException(e);
+    }
+  }
+
+  @Override
+  public Upgrade upgrade() {
+    return new UpgradeImpl(this);
   }
 
   @Override
