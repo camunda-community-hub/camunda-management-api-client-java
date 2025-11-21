@@ -4,7 +4,7 @@ import io.camunda.management.api.client.api.CamundaManagementApiClient.Clusters;
 import io.camunda.management.api.client.exception.CamundaConsoleClientException;
 import io.camunda.management.api.client.invoker.ApiException;
 import io.camunda.management.api.client.model.CreateCluster200Response;
-import io.camunda.management.api.client.model.CreateClusterBody;
+import io.camunda.management.api.client.model.CreateClusterRequest;
 import java.util.List;
 
 public class ClustersImpl extends AbstractCamundaManagementApiClient implements Clusters {
@@ -22,7 +22,7 @@ public class ClustersImpl extends AbstractCamundaManagementApiClient implements 
   }
 
   @Override
-  public CreateCluster200Response post(CreateClusterBody request) {
+  public CreateCluster200Response post(CreateClusterRequest request) {
     try {
       return getApi().createCluster(request);
     } catch (ApiException e) {
