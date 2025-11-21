@@ -7,8 +7,8 @@ import io.camunda.management.api.client.model.BackupDto;
 import io.camunda.management.api.client.model.ClusterClient;
 import io.camunda.management.api.client.model.ClusterClientConnectionDetails;
 import io.camunda.management.api.client.model.CreateCluster200Response;
-import io.camunda.management.api.client.model.CreateClusterBody;
 import io.camunda.management.api.client.model.CreateClusterClientBody;
+import io.camunda.management.api.client.model.CreateClusterRequest;
 import io.camunda.management.api.client.model.CreateSecretBody;
 import io.camunda.management.api.client.model.CreatedClusterClient;
 import io.camunda.management.api.client.model.GenerationUpgradeForClusterDto;
@@ -51,7 +51,7 @@ public interface CamundaManagementApiClient {
   interface Clusters {
     List<io.camunda.management.api.client.model.Cluster> get();
 
-    CreateCluster200Response post(CreateClusterBody request);
+    CreateCluster200Response post(CreateClusterRequest request);
 
     Parameters parameters();
 
