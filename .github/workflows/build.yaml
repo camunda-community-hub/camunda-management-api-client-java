@@ -17,9 +17,3 @@ jobs:
         cache: 'maven'
     - name: Build
       run: mvn verify -PcheckFormat -B
-    - name: Publish Unit Test Results
-      id: publish
-      uses: EnricoMi/publish-unit-test-result-action@v2
-      if: always()
-      with:
-        files: '**/target/surefire-reports/*.xml'
