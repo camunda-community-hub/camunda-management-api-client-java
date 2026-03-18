@@ -7,13 +7,13 @@
     <version>2.1.0</version>
   </parent>
   <groupId>io.camunda</groupId>
-  <artifactId>camunda-management-api-client-java-parent</artifactId>
-  <name>Camunda Management API Client Java Parent</name>
+  <artifactId>camunda-saas-administration-api-client-java-parent</artifactId>
+  <name>Camunda Saas Administration API Client Java Parent</name>
   <version>2.1.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modules>
-    <module>camunda-management-api-client-java-generated</module>
-    <module>camunda-management-api-client-java-core</module>
+    <module>camunda-saas-administration-api-client-java-generated</module>
+    <module>camunda-saas-administration-api-client-java-core</module>
   </modules>
 
   <properties>
@@ -69,7 +69,7 @@
       </dependency>
       <dependency>
         <groupId>io.camunda</groupId>
-        <artifactId>camunda-management-api-client-java-generated</artifactId>
+        <artifactId>camunda-saas-administration-api-client-java-generated</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>
