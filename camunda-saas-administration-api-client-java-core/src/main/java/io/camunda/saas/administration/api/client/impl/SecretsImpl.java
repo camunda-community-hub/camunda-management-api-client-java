@@ -1,9 +1,9 @@
 package io.camunda.saas.administration.api.client.impl;
 
 import io.camunda.saas.administration.api.client.api.CamundaSaasAdministrationApiClient.Cluster.Secrets;
+import io.camunda.saas.administration.api.client.api.model.CreateSecretRequest;
 import io.camunda.saas.administration.api.client.exception.CamundaConsoleClientException;
-import io.camunda.saas.administration.api.client.invoker.ApiException;
-import io.camunda.saas.administration.api.client.model.CreateSecretBody;
+import io.camunda.saas.administration.api.client.gen.invoker.ApiException;
 import java.util.Map;
 
 public class SecretsImpl extends AbstractCluster implements Secrets {
@@ -21,9 +21,9 @@ public class SecretsImpl extends AbstractCluster implements Secrets {
   }
 
   @Override
-  public void post(CreateSecretBody request) {
+  public void post(CreateSecretRequest request) {
     try {
-      getApi().createSecret(getClusterId(), request);
+      getApi().createSecret(getClusterId(), ModelMapper.from(request));
     } catch (ApiException e) {
       throw new CamundaConsoleClientException(e);
     }

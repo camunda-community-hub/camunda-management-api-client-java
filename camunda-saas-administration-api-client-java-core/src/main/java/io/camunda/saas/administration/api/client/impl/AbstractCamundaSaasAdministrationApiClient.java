@@ -1,6 +1,6 @@
 package io.camunda.saas.administration.api.client.impl;
 
-import io.camunda.saas.administration.api.client.api.DefaultApi;
+import io.camunda.saas.administration.api.client.gen.api.DefaultApi;
 
 public abstract class AbstractCamundaSaasAdministrationApiClient {
   private final DefaultApi api;

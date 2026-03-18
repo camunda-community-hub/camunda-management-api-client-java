@@ -1,9 +1,9 @@
 package io.camunda.saas.administration.api.client.impl;
 
 import io.camunda.saas.administration.api.client.api.CamundaSaasAdministrationApiClient.Upgrade;
+import io.camunda.saas.administration.api.client.api.model.ClusterUpgradeResponse;
 import io.camunda.saas.administration.api.client.exception.CamundaConsoleClientException;
-import io.camunda.saas.administration.api.client.invoker.ApiException;
-import io.camunda.saas.administration.api.client.model.GenerationUpgradeForClusterDto;
+import io.camunda.saas.administration.api.client.gen.invoker.ApiException;
 
 public class UpgradeImpl extends AbstractCluster implements Upgrade {
 
@@ -12,9 +12,9 @@ public class UpgradeImpl extends AbstractCluster implements Upgrade {
   }
 
   @Override
-  public GenerationUpgradeForClusterDto put() {
+  public ClusterUpgradeResponse put() {
     try {
-      return getApi().upgradeCluster(getClusterId());
+      return ModelMapper.from(getApi().upgradeCluster(getClusterId()));
     } catch (ApiException e) {
       throw new CamundaConsoleClientException(e);
     }

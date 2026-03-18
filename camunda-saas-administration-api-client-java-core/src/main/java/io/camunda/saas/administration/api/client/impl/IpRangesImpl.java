@@ -1,9 +1,9 @@
 package io.camunda.saas.administration.api.client.impl;
 
 import io.camunda.saas.administration.api.client.api.CamundaSaasAdministrationApiClient.IpRanges;
+import io.camunda.saas.administration.api.client.api.model.IpRangesResponse;
 import io.camunda.saas.administration.api.client.exception.CamundaConsoleClientException;
-import io.camunda.saas.administration.api.client.invoker.ApiException;
-import io.camunda.saas.administration.api.client.model.MetaDto;
+import io.camunda.saas.administration.api.client.gen.invoker.ApiException;
 
 public class IpRangesImpl extends AbstractCamundaSaasAdministrationApiClient implements IpRanges {
   public IpRangesImpl(AbstractCamundaSaasAdministrationApiClient saasAdministrationApiClient) {
@@ -11,9 +11,9 @@ public class IpRangesImpl extends AbstractCamundaSaasAdministrationApiClient imp
   }
 
   @Override
-  public MetaDto ipRanges() {
+  public IpRangesResponse get() {
     try {
-      return getApi().getMeta();
+      return ModelMapper.from(getApi().getMeta());
     } catch (ApiException e) {
       throw new CamundaConsoleClientException(e);
     }

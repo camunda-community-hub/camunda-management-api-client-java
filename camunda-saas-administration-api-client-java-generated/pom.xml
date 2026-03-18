@@ -75,10 +75,10 @@
               <inlineSchemaNameMappings>Cluster_status=Status</inlineSchemaNameMappings>
               <configOptions>
                 <useTags>true</useTags>
-                <packageName>io.camunda.saas.administration.api.client</packageName>
-                <apiPackage>io.camunda.saas.administration.api.client.api</apiPackage>
-                <invokerPackage>io.camunda.saas.administration.api.client.invoker</invokerPackage>
-                <modelPackage>io.camunda.saas.administration.api.client.model</modelPackage>
+                <packageName>io.camunda.saas.administration.api.client.gen</packageName>
+                <apiPackage>io.camunda.saas.administration.api.client.gen.api</apiPackage>
+                <invokerPackage>io.camunda.saas.administration.api.client.gen.invoker</invokerPackage>
+                <modelPackage>io.camunda.saas.administration.api.client.gen.model</modelPackage>
                 <library>apache-httpclient</library>
                 <useJakartaEe>true</useJakartaEe>
                 <dateLibrary>java8</dateLibrary>

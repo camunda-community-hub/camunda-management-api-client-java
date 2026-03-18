@@ -1,9 +1,9 @@
 package io.camunda.saas.administration.api.client.impl;
 
 import io.camunda.saas.administration.api.client.api.CamundaSaasAdministrationApiClient.Members;
+import io.camunda.saas.administration.api.client.api.model.MemberResponse;
 import io.camunda.saas.administration.api.client.exception.CamundaConsoleClientException;
-import io.camunda.saas.administration.api.client.invoker.ApiException;
-import io.camunda.saas.administration.api.client.model.Member;
+import io.camunda.saas.administration.api.client.gen.invoker.ApiException;
 import java.util.List;
 
 public class MembersImpl extends AbstractCamundaSaasAdministrationApiClient implements Members {
@@ -12,9 +12,9 @@ public class MembersImpl extends AbstractCamundaSaasAdministrationApiClient impl
   }
 
   @Override
-  public List<Member> get() {
+  public List<MemberResponse> get() {
     try {
-      return getApi().getMembers();
+      return ModelMapper.fromMemberList(getApi().getMembers());
     } catch (ApiException e) {
       throw new CamundaConsoleClientException(e);
     }

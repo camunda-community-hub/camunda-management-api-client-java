@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.*;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import io.camunda.saas.administration.api.client.api.CamundaSaasAdministrationApiClient;
-import io.camunda.saas.administration.api.client.model.Cluster;
+import io.camunda.saas.administration.api.client.api.model.ClusterResponse;
 import io.camunda.saas.administration.api.client.properties.CamundaSaasAdministrationApiClientProperties;
 import java.util.List;
 import java.util.UUID;
@@ -34,13 +34,29 @@ public class CamundaSaasAdministrationApiClientTest {
     stubFor(get("/api/clusters").willReturn(ok().withJsonBody(clusters())));
     CamundaSaasAdministrationApiClient client =
         CamundaSaasAdministrationApiClient.create(mockProperties(runtimeInfo));
-    List<Cluster> clusters = client.clusters().get();
+    List<ClusterResponse> clusters = client.clusters().get();
     assertThat(clusters).hasSize(1);
-    assertThat(clusters.get(0)).matches(c -> c.getName().equals("Test cluster"));
+    assertThat(clusters.get(0)).matches(c -> c.name().equals("Test cluster"));
   }
 
   private JsonNode clusters() {
-    Cluster cluster = new Cluster().uuid(UUID.randomUUID().toString()).name("Test cluster");
+    ClusterResponse cluster =
+        new ClusterResponse(
+            UUID.randomUUID().toString(),
+            "Test cluster",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null);
     return new ObjectMapper().valueToTree(List.of(cluster));
   }
 

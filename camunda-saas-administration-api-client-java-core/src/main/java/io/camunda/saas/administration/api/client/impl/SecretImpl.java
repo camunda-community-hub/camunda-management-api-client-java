@@ -2,7 +2,7 @@ package io.camunda.saas.administration.api.client.impl;
 
 import io.camunda.saas.administration.api.client.api.CamundaSaasAdministrationApiClient.Cluster.Secret;
 import io.camunda.saas.administration.api.client.exception.CamundaConsoleClientException;
-import io.camunda.saas.administration.api.client.invoker.ApiException;
+import io.camunda.saas.administration.api.client.gen.invoker.ApiException;
 
 public class SecretImpl extends AbstractCluster implements Secret {
   private final String secretName;

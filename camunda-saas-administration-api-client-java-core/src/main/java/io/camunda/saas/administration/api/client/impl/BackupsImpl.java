@@ -1,9 +1,9 @@
 package io.camunda.saas.administration.api.client.impl;
 
 import io.camunda.saas.administration.api.client.api.CamundaSaasAdministrationApiClient.Cluster.Backups;
+import io.camunda.saas.administration.api.client.api.model.BackupResponse;
 import io.camunda.saas.administration.api.client.exception.CamundaConsoleClientException;
-import io.camunda.saas.administration.api.client.invoker.ApiException;
-import io.camunda.saas.administration.api.client.model.BackupDto;
+import io.camunda.saas.administration.api.client.gen.invoker.ApiException;
 import java.util.List;
 
 public class BackupsImpl extends AbstractCluster implements Backups {
@@ -13,18 +13,18 @@ public class BackupsImpl extends AbstractCluster implements Backups {
   }
 
   @Override
-  public List<BackupDto> get() {
+  public List<BackupResponse> get() {
     try {
-      return getApi().getBackups(getClusterId());
+      return ModelMapper.fromBackupList(getApi().getBackups(getClusterId()));
     } catch (ApiException e) {
       throw new CamundaConsoleClientException(e);
     }
   }
 
   @Override
-  public BackupDto post() {
+  public BackupResponse post() {
     try {
-      return getApi().createBackup(getClusterId());
+      return ModelMapper.from(getApi().createBackup(getClusterId()));
     } catch (ApiException e) {
       throw new CamundaConsoleClientException(e);
     }

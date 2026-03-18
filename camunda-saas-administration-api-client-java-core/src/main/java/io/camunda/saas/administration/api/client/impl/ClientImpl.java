@@ -1,9 +1,9 @@
 package io.camunda.saas.administration.api.client.impl;
 
 import io.camunda.saas.administration.api.client.api.CamundaSaasAdministrationApiClient.Cluster.Client;
+import io.camunda.saas.administration.api.client.api.model.ClusterClientDetailsResponse;
 import io.camunda.saas.administration.api.client.exception.CamundaConsoleClientException;
-import io.camunda.saas.administration.api.client.invoker.ApiException;
-import io.camunda.saas.administration.api.client.model.ClusterClientConnectionDetails;
+import io.camunda.saas.administration.api.client.gen.invoker.ApiException;
 
 public class ClientImpl extends AbstractCluster implements Client {
   private final String clientId;
@@ -14,9 +14,9 @@ public class ClientImpl extends AbstractCluster implements Client {
   }
 
   @Override
-  public ClusterClientConnectionDetails get() {
+  public ClusterClientDetailsResponse get() {
     try {
-      return getApi().getClient(getClusterId(), clientId);
+      return ModelMapper.from(getApi().getClient(getClusterId(), clientId));
     } catch (ApiException e) {
       throw new CamundaConsoleClientException(e);
     }
