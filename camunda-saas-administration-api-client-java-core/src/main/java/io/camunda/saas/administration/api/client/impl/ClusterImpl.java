@@ -2,9 +2,10 @@ package io.camunda.saas.administration.api.client.impl;
 
 import io.camunda.saas.administration.api.client.api.CamundaSaasAdministrationApiClient.Cluster;
 import io.camunda.saas.administration.api.client.api.CamundaSaasAdministrationApiClient.Upgrade;
+import io.camunda.saas.administration.api.client.api.model.ClusterResponse;
+import io.camunda.saas.administration.api.client.api.model.UpdateClusterRequest;
 import io.camunda.saas.administration.api.client.exception.CamundaConsoleClientException;
-import io.camunda.saas.administration.api.client.invoker.ApiException;
-import io.camunda.saas.administration.api.client.model.UpdateClusterBody;
+import io.camunda.saas.administration.api.client.gen.invoker.ApiException;
 
 public class ClusterImpl extends AbstractCluster implements Cluster {
 
@@ -14,9 +15,9 @@ public class ClusterImpl extends AbstractCluster implements Cluster {
   }
 
   @Override
-  public io.camunda.saas.administration.api.client.model.Cluster get() {
+  public ClusterResponse get() {
     try {
-      return getApi().getCluster(getClusterId());
+      return ModelMapper.from(getApi().getCluster(getClusterId()));
     } catch (ApiException e) {
       throw new CamundaConsoleClientException(e);
     }
@@ -32,9 +33,9 @@ public class ClusterImpl extends AbstractCluster implements Cluster {
   }
 
   @Override
-  public void patch(UpdateClusterBody request) {
+  public void patch(UpdateClusterRequest request) {
     try {
-      getApi().updateCluster(getClusterId(), request);
+      getApi().updateCluster(getClusterId(), ModelMapper.from(request));
     } catch (ApiException e) {
       throw new CamundaConsoleClientException(e);
     }
@@ -53,12 +54,6 @@ public class ClusterImpl extends AbstractCluster implements Cluster {
   @Override
   public Backup backups(String backupId) {
     return new BackupImpl(this, backupId);
-  }
-
-  @Override
-  @Deprecated
-  public IpWhiteList ipwhitelist() {
-    return new IpWhiteListImpl(this);
   }
 
   @Override

@@ -1,9 +1,9 @@
 package io.camunda.saas.administration.api.client.impl;
 
 import io.camunda.saas.administration.api.client.api.CamundaSaasAdministrationApiClient.Cluster.IpAllowList;
+import io.camunda.saas.administration.api.client.api.model.IpAllowListRequest;
 import io.camunda.saas.administration.api.client.exception.CamundaConsoleClientException;
-import io.camunda.saas.administration.api.client.invoker.ApiException;
-import io.camunda.saas.administration.api.client.model.IpAllowListBody;
+import io.camunda.saas.administration.api.client.gen.invoker.ApiException;
 
 public class IpAllowListImpl extends AbstractCluster implements IpAllowList {
 
@@ -12,9 +12,9 @@ public class IpAllowListImpl extends AbstractCluster implements IpAllowList {
   }
 
   @Override
-  public void put(IpAllowListBody request) {
+  public void put(IpAllowListRequest request) {
     try {
-      getApi().updateIpAllowlist(getClusterId(), request);
+      getApi().updateIpAllowlist(getClusterId(), ModelMapper.from(request));
     } catch (ApiException e) {
       throw new CamundaConsoleClientException(e);
     }

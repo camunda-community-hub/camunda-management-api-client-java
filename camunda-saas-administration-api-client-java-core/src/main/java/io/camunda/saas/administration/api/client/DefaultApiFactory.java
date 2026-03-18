@@ -1,10 +1,10 @@
 package io.camunda.saas.administration.api.client;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.camunda.saas.administration.api.client.api.DefaultApi;
 import io.camunda.saas.administration.api.client.auth.JsonClientResponseHandler;
 import io.camunda.saas.administration.api.client.auth.TokenRequestInterceptor;
-import io.camunda.saas.administration.api.client.invoker.ApiClient;
+import io.camunda.saas.administration.api.client.gen.api.DefaultApi;
+import io.camunda.saas.administration.api.client.gen.invoker.ApiClient;
 import io.camunda.saas.administration.api.client.properties.CamundaSaasAdministrationApiClientProperties;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;

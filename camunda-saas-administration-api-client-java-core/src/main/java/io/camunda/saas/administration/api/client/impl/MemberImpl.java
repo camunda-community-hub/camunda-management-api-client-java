@@ -1,9 +1,9 @@
 package io.camunda.saas.administration.api.client.impl;
 
 import io.camunda.saas.administration.api.client.api.CamundaSaasAdministrationApiClient.Member;
+import io.camunda.saas.administration.api.client.api.model.PostMemberRequest;
 import io.camunda.saas.administration.api.client.exception.CamundaConsoleClientException;
-import io.camunda.saas.administration.api.client.invoker.ApiException;
-import io.camunda.saas.administration.api.client.model.PostMemberBody;
+import io.camunda.saas.administration.api.client.gen.invoker.ApiException;
 
 public class MemberImpl extends AbstractCamundaSaasAdministrationApiClient implements Member {
   private final String email;
@@ -15,9 +15,9 @@ public class MemberImpl extends AbstractCamundaSaasAdministrationApiClient imple
   }
 
   @Override
-  public void post(PostMemberBody request) {
+  public void post(PostMemberRequest request) {
     try {
-      getApi().updateMembers(email, request);
+      getApi().updateMembers(email, ModelMapper.from(request));
     } catch (ApiException e) {
       throw new CamundaConsoleClientException(e);
     }

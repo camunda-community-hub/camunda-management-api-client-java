@@ -1,11 +1,11 @@
 package io.camunda.saas.administration.api.client.impl;
 
 import io.camunda.saas.administration.api.client.api.CamundaSaasAdministrationApiClient.Cluster.Clients;
+import io.camunda.saas.administration.api.client.api.model.ClusterClientResponse;
+import io.camunda.saas.administration.api.client.api.model.CreateClusterClientRequest;
+import io.camunda.saas.administration.api.client.api.model.CreateClusterClientResponse;
 import io.camunda.saas.administration.api.client.exception.CamundaConsoleClientException;
-import io.camunda.saas.administration.api.client.invoker.ApiException;
-import io.camunda.saas.administration.api.client.model.ClusterClient;
-import io.camunda.saas.administration.api.client.model.CreateClusterClientBody;
-import io.camunda.saas.administration.api.client.model.CreatedClusterClient;
+import io.camunda.saas.administration.api.client.gen.invoker.ApiException;
 import java.util.List;
 
 public class ClientsImpl extends AbstractCluster implements Clients {
@@ -15,18 +15,18 @@ public class ClientsImpl extends AbstractCluster implements Clients {
   }
 
   @Override
-  public List<ClusterClient> get() {
+  public List<ClusterClientResponse> get() {
     try {
-      return getApi().getClients(getClusterId());
+      return ModelMapper.fromClientList(getApi().getClients(getClusterId()));
     } catch (ApiException e) {
       throw new CamundaConsoleClientException(e);
     }
   }
 
   @Override
-  public CreatedClusterClient post(CreateClusterClientBody request) {
+  public CreateClusterClientResponse post(CreateClusterClientRequest request) {
     try {
-      return getApi().createClient(getClusterId(), request);
+      return ModelMapper.from(getApi().createClient(getClusterId(), ModelMapper.from(request)));
     } catch (ApiException e) {
       throw new CamundaConsoleClientException(e);
     }

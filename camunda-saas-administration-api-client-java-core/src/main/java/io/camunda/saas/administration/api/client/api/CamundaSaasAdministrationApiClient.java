@@ -1,22 +1,24 @@
 package io.camunda.saas.administration.api.client.api;
 
 import io.camunda.saas.administration.api.client.DefaultApiFactory;
+import io.camunda.saas.administration.api.client.api.model.ActivityResponse;
+import io.camunda.saas.administration.api.client.api.model.BackupResponse;
+import io.camunda.saas.administration.api.client.api.model.ClusterClientDetailsResponse;
+import io.camunda.saas.administration.api.client.api.model.ClusterClientResponse;
+import io.camunda.saas.administration.api.client.api.model.ClusterResponse;
+import io.camunda.saas.administration.api.client.api.model.ClusterUpgradeResponse;
+import io.camunda.saas.administration.api.client.api.model.CreateClusterClientRequest;
+import io.camunda.saas.administration.api.client.api.model.CreateClusterClientResponse;
+import io.camunda.saas.administration.api.client.api.model.CreateClusterRequest;
+import io.camunda.saas.administration.api.client.api.model.CreateClusterResponse;
+import io.camunda.saas.administration.api.client.api.model.CreateSecretRequest;
+import io.camunda.saas.administration.api.client.api.model.IpAllowListRequest;
+import io.camunda.saas.administration.api.client.api.model.IpRangesResponse;
+import io.camunda.saas.administration.api.client.api.model.MemberResponse;
+import io.camunda.saas.administration.api.client.api.model.ParametersResponse;
+import io.camunda.saas.administration.api.client.api.model.PostMemberRequest;
+import io.camunda.saas.administration.api.client.api.model.UpdateClusterRequest;
 import io.camunda.saas.administration.api.client.impl.CamundaSaasAdministrationApiClientImpl;
-import io.camunda.saas.administration.api.client.model.AuditDto;
-import io.camunda.saas.administration.api.client.model.BackupDto;
-import io.camunda.saas.administration.api.client.model.ClusterClient;
-import io.camunda.saas.administration.api.client.model.ClusterClientConnectionDetails;
-import io.camunda.saas.administration.api.client.model.CreateCluster200Response;
-import io.camunda.saas.administration.api.client.model.CreateClusterClientBody;
-import io.camunda.saas.administration.api.client.model.CreateClusterRequest;
-import io.camunda.saas.administration.api.client.model.CreateSecretBody;
-import io.camunda.saas.administration.api.client.model.CreatedClusterClient;
-import io.camunda.saas.administration.api.client.model.GenerationUpgradeForClusterDto;
-import io.camunda.saas.administration.api.client.model.IpAllowListBody;
-import io.camunda.saas.administration.api.client.model.IpWhiteListBody;
-import io.camunda.saas.administration.api.client.model.MetaDto;
-import io.camunda.saas.administration.api.client.model.PostMemberBody;
-import io.camunda.saas.administration.api.client.model.UpdateClusterBody;
 import io.camunda.saas.administration.api.client.properties.CamundaSaasAdministrationApiClientProperties;
 import java.util.List;
 import java.util.Map;
@@ -51,32 +53,29 @@ public interface CamundaSaasAdministrationApiClient {
   Activity activity();
 
   interface Clusters {
-    List<io.camunda.saas.administration.api.client.model.Cluster> get();
+    List<ClusterResponse> get();
 
-    CreateCluster200Response post(CreateClusterRequest request);
+    CreateClusterResponse post(CreateClusterRequest request);
 
     Parameters parameters();
 
     interface Parameters {
-      io.camunda.saas.administration.api.client.model.Parameters get();
+      ParametersResponse get();
     }
   }
 
   interface Cluster {
-    io.camunda.saas.administration.api.client.model.Cluster get();
+    ClusterResponse get();
 
     void delete();
 
-    void patch(UpdateClusterBody request);
+    void patch(UpdateClusterRequest request);
 
     Upgrade upgrade();
 
     Backups backups();
 
     Backup backups(String backupId);
-
-    @Deprecated
-    IpWhiteList ipwhitelist();
 
     IpAllowList ipallowlist();
 
@@ -91,22 +90,17 @@ public interface CamundaSaasAdministrationApiClient {
     Secret secrets(String secretName);
 
     interface Backups {
-      List<BackupDto> get();
+      List<BackupResponse> get();
 
-      BackupDto post();
+      BackupResponse post();
     }
 
     interface Backup {
-      BackupDto delete();
-    }
-
-    @Deprecated
-    interface IpWhiteList {
-      void put(IpWhiteListBody request);
+      BackupResponse delete();
     }
 
     interface IpAllowList {
-      void put(IpAllowListBody request);
+      void put(IpAllowListRequest request);
     }
 
     interface Wake {
@@ -114,13 +108,13 @@ public interface CamundaSaasAdministrationApiClient {
     }
 
     interface Clients {
-      List<ClusterClient> get();
+      List<ClusterClientResponse> get();
 
-      CreatedClusterClient post(CreateClusterClientBody request);
+      CreateClusterClientResponse post(CreateClusterClientRequest request);
     }
 
     interface Client {
-      ClusterClientConnectionDetails get();
+      ClusterClientDetailsResponse get();
 
       void delete();
     }
@@ -128,7 +122,7 @@ public interface CamundaSaasAdministrationApiClient {
     interface Secrets {
       Map<String, String> get();
 
-      void post(CreateSecretBody request);
+      void post(CreateSecretRequest request);
     }
 
     interface Secret {
@@ -137,17 +131,17 @@ public interface CamundaSaasAdministrationApiClient {
   }
 
   interface Members {
-    List<io.camunda.saas.administration.api.client.model.Member> get();
+    List<MemberResponse> get();
   }
 
   interface Member {
-    void post(PostMemberBody request);
+    void post(PostMemberRequest request);
 
     void delete();
   }
 
   interface Upgrade {
-    GenerationUpgradeForClusterDto put();
+    ClusterUpgradeResponse put();
   }
 
   interface Meta {
@@ -155,7 +149,7 @@ public interface CamundaSaasAdministrationApiClient {
   }
 
   interface IpRanges {
-    MetaDto ipRanges();
+    IpRangesResponse get();
   }
 
   interface Activity {
@@ -165,7 +159,7 @@ public interface CamundaSaasAdministrationApiClient {
   }
 
   interface Json {
-    List<AuditDto> get();
+    List<ActivityResponse> get();
   }
 
   interface Csv {
